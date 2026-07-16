@@ -33,6 +33,7 @@
       "url": "https://beitdouma.com/",
       "image": "https://beitdouma.com/assets/aerial.jpg",
       "logo": "https://beitdouma.com/assets/logo-badge.png",
+      "sameAs": ["https://www.instagram.com/beitdouma"],
       "telephone": "+961-6-520-702",
       "email": "info@beitdouma.com",
       "priceRange": "$140–$200",
@@ -64,6 +65,7 @@
       "url": "https://beitdouma.com/#tawlet",
       "image": "https://beitdouma.com/assets/food-hero.jpg",
       "logo": "https://beitdouma.com/assets/logo-badge.png",
+      "sameAs": ["https://www.instagram.com/beitdouma"],
       "servesCuisine": "Lebanese",
       "telephone": "+961-70-082-225",
       "acceptsReservations": "https://eatapp.co/en/reserve/tawlet-beit-douma-120281",
@@ -130,6 +132,7 @@
   .brand { display: flex; align-items: center; text-decoration: none; }
   .brand img { height: 40px; width: auto; border-radius: 8px; display: block; }
   .nav-links { display: flex; gap: 1.9rem; list-style: none; }
+  .nav-links .menu-extra { display: none; } /* panel-only rows, shown ≤700px */
   .nav-links a {
     text-decoration: none; font-size: .95rem; font-weight: 600; color: var(--ink-soft);
     padding: .35rem 0; border-bottom: 2px solid transparent; transition: color .18s, border-color .18s;
@@ -489,22 +492,46 @@
     .arch-frame { max-width: 480px; }
   }
   @media (max-width: 700px) {
-    .brand img { height: 34px; }
-    .nav { gap: .6rem; }
-    .nav .btn { padding: .5rem 1rem; font-size: .85rem; white-space: nowrap; min-height: 44px; display: inline-flex; align-items: center; }
-    .nav-links {
-      position: absolute; top: 4.25rem; left: 0; right: 0; flex-direction: column; gap: 0;
-      background: var(--stone); border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
-      max-height: 0; overflow: hidden; transition: max-height .25s ease;
+    .brand img { height: 32px; }
+    .nav { gap: .75rem; }
+    /* logo on the left; CTA and burger form one tidy group on the right */
+    .nav .btn {
+      margin-left: auto; padding: .3rem 1rem .5rem; font-size: .84rem; white-space: nowrap;
+      min-height: 44px; display: inline-flex; align-items: center;
     }
-    .nav-links li { padding: 0 1.5rem; }
-    .nav-links a { display: block; padding: .9rem 0; border-bottom: none; }
+    .nav-links {
+      position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0;
+      background: var(--stone);
+      max-height: 0; overflow: hidden; transition: max-height .3s ease;
+      box-shadow: 0 28px 44px -28px rgba(38, 51, 44, .45);
+    }
+    .nav-links li { padding: 0 1.4rem; }
+    .nav-links li + li { border-top: 1px solid color-mix(in srgb, var(--ink) 9%, transparent); }
+    .nav-links a {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      min-height: 52px; padding: .3rem 0; border-bottom: none; font-size: 1.03rem; color: var(--ink);
+    }
+    .nav-links li:not(.menu-extra) a::after {
+      content: "→"; color: var(--shutter-deep); opacity: .45;
+      transition: transform .18s ease, opacity .18s ease;
+    }
+    .nav-links li:not(.menu-extra) a:active::after { transform: translateX(3px); opacity: 1; }
+    .nav-links .menu-extra { display: block; }
+    .menu-cta { padding-block: 1.05rem; }
+    .menu-cta .btn {
+      margin: 0; width: 100%; justify-content: center;
+      color: var(--cream); font-size: .95rem; /* re-assert over .nav-links a's ink color */
+    }
+    .menu-foot a {
+      min-height: 48px; font-size: .9rem; color: var(--ink-soft); font-weight: 600;
+    }
+    .menu-foot .ar { color: var(--tile); font-size: 1rem; }
     .menu-toggle {
       display: flex; flex-direction: column; justify-content: center; gap: 5px;
       width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 10px;
     }
     .menu-toggle span { display: block; height: 2px; background: var(--ink); transition: transform .2s, opacity .2s; }
-    .nav.open .nav-links { max-height: 22rem; }
+    .nav.open .nav-links { max-height: 34rem; }
     .nav.open .menu-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav.open .menu-toggle span:nth-child(2) { opacity: 0; }
     .nav.open .menu-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -529,6 +556,8 @@
         <li><a href="#tawlet">Tawlet</a></li>
         <li><a href="#reviews">Guests</a></li>
         <li><a href="#visit">Visit</a></li>
+        <li class="menu-extra menu-cta"><a class="btn btn-ink" href="https://eatapp.co/en/reserve/tawlet-beit-douma-120281" target="_blank" rel="noopener">Reserve the weekend buffet</a></li>
+        <li class="menu-extra menu-foot"><a href="https://www.instagram.com/beitdouma" target="_blank" rel="noopener">Follow us — @beitdouma<span class="ar" lang="ar">بيت دوما</span></a></li>
       </ul>
       <a class="btn btn-ink" href="#visit">Book a stay</a>
       <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="const n=document.getElementById('nav');n.classList.toggle('open');this.setAttribute('aria-expanded',n.classList.contains('open'))">
@@ -827,6 +856,7 @@
           <li><strong>Address</strong> Beit Douma, Douma village, Batroun District, North Lebanon — <a href="https://www.google.com/maps/search/?api=1&query=Beit+Douma+Douma+Lebanon" target="_blank" rel="noopener">open in Google Maps</a></li>
           <li><strong>Phone</strong> <a href="tel:+9616520702">+961 6 520 702</a> · <a href="tel:+96170082225">+961 70 082 225</a></li>
           <li><strong>Email</strong> <a href="mailto:info@beitdouma.com">info@beitdouma.com</a></li>
+          <li><strong>Instagram</strong> <a href="https://www.instagram.com/beitdouma" target="_blank" rel="noopener">@beitdouma</a></li>
           <li><strong>Part of</strong> <a href="https://www.soukeltayeb.com/beit/1/beit-douma" target="_blank" rel="noopener">the Souk el Tayeb family</a> of guesthouses &amp; tawlets</li>
         </ul>
       </div>
@@ -857,7 +887,7 @@
   <div class="wrap">
     <span>© 2026 Beit Douma · Douma, Batroun, Lebanon</span>
     <span class="footer-mark"><img src="assets/logo-white.png" alt="" width="600" height="314" loading="lazy"> an old house, kept alive</span>
-    <span><a href="https://www.soukeltayeb.com" target="_blank" rel="noopener">Souk el Tayeb</a></span>
+    <span><a href="https://www.instagram.com/beitdouma" target="_blank" rel="noopener">@beitdouma</a> · <a href="https://www.soukeltayeb.com" target="_blank" rel="noopener">Souk el Tayeb</a></span>
   </div>
 </footer>
 
@@ -889,10 +919,18 @@
   });
   lb.addEventListener('click', e => { if (e.target === lb) lb.close(); });
 
-  // close the mobile menu when a link is chosen
-  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
-    document.getElementById('nav').classList.remove('open');
-  }));
+  // mobile menu: close when a link is chosen, on Escape, or on a tap outside
+  const navEl = document.getElementById('nav');
+  const navToggle = navEl.querySelector('.menu-toggle');
+  function closeNav() {
+    navEl.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
+  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', closeNav));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
+  document.addEventListener('click', e => {
+    if (navEl.classList.contains('open') && !navEl.contains(e.target)) closeNav();
+  });
 
   // full à la carte menu — paged in the order the pages were shot
   const menuPages = [
