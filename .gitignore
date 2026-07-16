@@ -3,3 +3,7 @@ node_modules/
 /temporary screenshots/
 /Screenshot*.png
 .claude/
+
+# Local Netlify folder
+.netlify
+.netlify-publish/
