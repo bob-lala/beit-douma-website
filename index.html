@@ -15,7 +15,8 @@
 <meta name="twitter:title" content="Beit Douma — Guesthouse &amp; Tawlet in Douma, Lebanon">
 <meta name="twitter:description" content="A restored 18th-century Lebanese house in the Batroun mountains: five rooms, weekend buffets, orchards and quiet.">
 <meta name="twitter:image" content="https://beitdouma.com/assets/aerial.jpg">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M20 95V45 Q20 15 50 15 Q80 15 80 45 V95 Z' fill='%2363A98C'/></svg>">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 <link rel="preload" as="image" href="assets/aerial.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +32,7 @@
       "description": "A restored 18th-century Lebanese house in Douma, Batroun mountains, with five guest rooms, gardens, orchards and a farmers' kitchen. Part of the Souk el Tayeb family.",
       "url": "https://beitdouma.com/",
       "image": "https://beitdouma.com/assets/aerial.jpg",
+      "logo": "https://beitdouma.com/assets/logo-badge.png",
       "telephone": "+961-6-520-702",
       "email": "info@beitdouma.com",
       "priceRange": "$140–$200",
@@ -61,6 +63,7 @@
       "description": "Farmers' kitchen at Beit Douma serving an à la carte Lebanese menu all week and an open buffet of regional dishes every Saturday and Sunday.",
       "url": "https://beitdouma.com/#tawlet",
       "image": "https://beitdouma.com/assets/food-hero.jpg",
+      "logo": "https://beitdouma.com/assets/logo-badge.png",
       "servesCuisine": "Lebanese",
       "telephone": "+961-70-082-225",
       "acceptsReservations": "https://eatapp.co/en/reserve/tawlet-beit-douma-120281",
@@ -124,9 +127,8 @@
     border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
   }
   .nav { display: flex; align-items: center; justify-content: space-between; height: 4.25rem; }
-  .brand { display: flex; align-items: baseline; gap: .65rem; text-decoration: none; }
-  .brand strong { font-family: "Young Serif", serif; font-weight: 400; font-size: 1.35rem; }
-  .brand .ar { color: var(--tile); font-size: 1.05rem; }
+  .brand { display: flex; align-items: center; text-decoration: none; }
+  .brand img { height: 40px; width: auto; border-radius: 8px; display: block; }
   .nav-links { display: flex; gap: 1.9rem; list-style: none; }
   .nav-links a {
     text-decoration: none; font-size: .95rem; font-weight: 600; color: var(--ink-soft);
@@ -419,6 +421,8 @@
   footer { background: var(--ink); color: color-mix(in srgb, var(--stone) 60%, transparent); border-top: 1px solid color-mix(in srgb, var(--stone) 15%, transparent); }
   footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2.5rem; justify-content: space-between; padding-block: 1.6rem; font-size: .9rem; }
   footer a { color: color-mix(in srgb, var(--stone) 80%, transparent); }
+  .footer-mark { display: inline-flex; align-items: center; gap: .5rem; }
+  .footer-mark img { height: 20px; width: auto; opacity: .9; }
 
   /* ---------- lightbox ---------- */
   dialog.lightbox {
@@ -485,8 +489,7 @@
     .arch-frame { max-width: 480px; }
   }
   @media (max-width: 700px) {
-    .brand .ar { display: none; }
-    .brand strong { font-size: 1.15rem; white-space: nowrap; }
+    .brand img { height: 34px; }
     .nav { gap: .6rem; }
     .nav .btn { padding: .5rem 1rem; font-size: .85rem; white-space: nowrap; min-height: 44px; display: inline-flex; align-items: center; }
     .nav-links {
@@ -517,9 +520,8 @@
 <header>
   <div class="wrap">
     <nav class="nav" id="nav" aria-label="Main">
-      <a class="brand" href="#top">
-        <strong>Beit Douma</strong>
-        <span class="ar" lang="ar">بيت دوما</span>
+      <a class="brand" href="#top" aria-label="Beit Douma — home">
+        <img src="assets/logo-badge.png" alt="Beit Douma" width="600" height="314">
       </a>
       <ul class="nav-links">
         <li><a href="#house">The House</a></li>
@@ -854,7 +856,7 @@
 <footer>
   <div class="wrap">
     <span>© 2026 Beit Douma · Douma, Batroun, Lebanon</span>
-    <span><span class="ar" lang="ar">بيت دوما</span> — an old house, kept alive</span>
+    <span class="footer-mark"><img src="assets/logo-white.png" alt="" width="600" height="314" loading="lazy"> an old house, kept alive</span>
     <span><a href="https://www.soukeltayeb.com" target="_blank" rel="noopener">Souk el Tayeb</a></span>
   </div>
 </footer>
