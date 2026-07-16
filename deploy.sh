@@ -9,6 +9,6 @@ cd "$(dirname "$0")"
 rm -rf .netlify-publish
 mkdir -p .netlify-publish/assets
 cp index.html robots.txt sitemap.xml .netlify-publish/
-cp assets/*.jpg .netlify-publish/assets/
+cp assets/*.jpg assets/*.png .netlify-publish/assets/
 
 npx --yes netlify-cli deploy --prod --dir .netlify-publish
